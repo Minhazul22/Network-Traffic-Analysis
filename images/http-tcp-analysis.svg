@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1240" viewBox="0 0 1440 1240" role="img" aria-labelledby="title desc">
+  <title id="title">Network traffic analysis: annotated TCP SYN and HTTP flow</title>
+  <desc id="desc">Sanitized infographic based on a ten-packet tcpdump capture of an HTTP request over TCP. It summarizes the first SYN packet's observed fields and the packet sequence without exposing MAC or IP addresses.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f4f7fb}.panel{fill:#fff;stroke:#d6e0ea;stroke-width:2}.navy{fill:#173b63}.heading{font:700 28px Arial,sans-serif;fill:#fff}.subheading{font:700 21px Arial,sans-serif;fill:#18324e}.body{font:17px Arial,sans-serif;fill:#24364b}.small{font:14px Arial,sans-serif;fill:#536579}.mono{font:15px 'Courier New',monospace;fill:#1f3044}.tablehead{font:700 16px Arial,sans-serif;fill:#18324e}.field{font:700 15px Arial,sans-serif;fill:#314761}.value{font:15px Arial,sans-serif;fill:#203449}.red{fill:#fde8e7;stroke:#e9817d}.green{fill:#e6f6ec;stroke:#67ba83}.blue{fill:#e6f1ff;stroke:#7ba9e5}.line{stroke:#d6e0ea;stroke-width:1.2}.accent{fill:#245aa5}.white{fill:#fff}.packetnum{font:700 16px Arial,sans-serif;fill:#fff}.timeline{font:15px Arial,sans-serif;fill:#24364b}
+    </style>
+    <marker id="arrowBlue" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#245aa5"/></marker>
+    <marker id="arrowRed" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#c44c48"/></marker>
+  </defs>
+  <rect class="bg" width="1440" height="1240"/>
+  <rect class="navy" x="18" y="16" width="1404" height="66" rx="12"/>
+  <text class="heading" x="42" y="58">Network Traffic Analysis — Annotated TCP SYN</text>
+  <text x="42" y="108" class="small">Sanitized summary of the supplied tcpdump capture • 10 packets • HTTP over TCP port 80</text>
+
+  <rect class="panel" x="18" y="128" width="1404" height="306" rx="12"/>
+  <text class="subheading" x="40" y="164">Packet 1 — observed values from tcpdump</text>
+  <text class="mono" x="40" y="197">Client:[redacted]:49716 → Server:[redacted]:80   Flags [S]   seq 2245535166   ack 0   win 64240   IP length 60</text>
+  <text class="small" x="40" y="223">The frame starts the TCP three-way handshake. Endpoint IP and MAC addresses are intentionally omitted from this graphic.</text>
+  <rect class="red" x="40" y="245" width="425" height="164" rx="8"/>
+  <text class="tablehead" x="58" y="275">Ethernet II header</text>
+  <line class="line" x1="40" y1="288" x2="465" y2="288"/>
+  <text class="field" x="58" y="316">Header length</text><text class="value" x="240" y="316">14 bytes</text>
+  <line class="line" x1="40" y1="329" x2="465" y2="329"/>
+  <text class="field" x="58" y="353">Source / destination MAC</text><text class="value" x="58" y="377">Redacted</text>
+  <text class="field" x="240" y="353">EtherType</text><text class="value" x="240" y="377">0x0800 (IPv4)</text>
+
+  <rect class="green" x="487" y="245" width="425" height="164" rx="8"/>
+  <text class="tablehead" x="505" y="275">IPv4 header</text>
+  <line class="line" x1="487" y1="288" x2="912" y2="288"/>
+  <text class="field" x="505" y="316">Version / header</text><text class="value" x="700" y="316">IPv4 / 20 bytes</text>
+  <line class="line" x1="487" y1="329" x2="912" y2="329"/>
+  <text class="field" x="505" y="353">Total length</text><text class="value" x="700" y="353">60 bytes</text>
+  <line class="line" x1="487" y1="366" x2="912" y2="366"/>
+  <text class="field" x="505" y="390">TTL 64 • ID 57088 • DF set • Protocol TCP (6)</text>
+
+  <rect class="blue" x="934" y="245" width="466" height="164" rx="8"/>
+  <text class="tablehead" x="952" y="275">TCP header</text>
+  <line class="line" x1="934" y1="288" x2="1400" y2="288"/>
+  <text class="field" x="952" y="316">Source / destination ports</text><text class="value" x="1190" y="316">49716 → 80</text>
+  <line class="line" x1="934" y1="329" x2="1400" y2="329"/>
+  <text class="field" x="952" y="353">Sequence / acknowledgment</text><text class="value" x="1190" y="353">2245535166 / 0</text>
+  <line class="line" x1="934" y1="366" x2="1400" y2="366"/>
+  <text class="field" x="952" y="390">SYN • window 64240 • TCP header 40 bytes incl. options</text>
+  <text class="small" x="40" y="425">TCP options observed: MSS 1460, SACK permitted, timestamps, and window scaling. SYN packet carries no application payload.</text>
+
+  <rect class="navy" x="18" y="454" width="1404" height="52" rx="10"/>
+  <text class="heading" x="40" y="488">TCP/HTTP connection flow — all 10 captured packets</text>
+  <rect class="panel" x="18" y="520" width="1404" height="420" rx="12"/>
+  <text class="tablehead" x="42" y="553">Packet</text><text class="tablehead" x="145" y="553">Direction</text><text class="tablehead" x="360" y="553">Observed event</text><text class="tablehead" x="850" y="553">Interpretation</text>
+  <line class="line" x1="40" y1="566" x2="1400" y2="566"/>
+  <g>
+    <circle class="accent" cx="62" cy="591" r="14"/><text class="packetnum" x="57" y="597">1</text><text class="timeline" x="145" y="597">Client → Server</text><text class="timeline" x="360" y="597">SYN</text><text class="timeline" x="850" y="597">Client starts TCP handshake</text>
+    <line class="line" x1="40" y1="610" x2="1400" y2="610"/>
+    <circle class="accent" cx="62" cy="635" r="14"/><text class="packetnum" x="57" y="641">2</text><text class="timeline" x="145" y="641">Server → Client</text><text class="timeline" x="360" y="641">SYN-ACK</text><text class="timeline" x="850" y="641">Server acknowledges and replies with SYN</text>
+    <line class="line" x1="40" y1="654" x2="1400" y2="654"/>
+    <circle class="accent" cx="62" cy="679" r="14"/><text class="packetnum" x="57" y="685">3</text><text class="timeline" x="145" y="685">Client → Server</text><text class="timeline" x="360" y="685">ACK</text><text class="timeline" x="850" y="685">Three-way handshake completes</text>
+    <line class="line" x1="40" y1="698" x2="1400" y2="698"/>
+    <circle class="accent" cx="62" cy="723" r="14"/><text class="packetnum" x="57" y="729">4</text><text class="timeline" x="145" y="729">Client → Server</text><text class="timeline" x="360" y="729">HTTP GET /</text><text class="timeline" x="850" y="729">Request for the root path</text>
+    <line class="line" x1="40" y1="742" x2="1400" y2="742"/>
+    <circle class="accent" cx="62" cy="767" r="14"/><text class="packetnum" x="57" y="773">5</text><text class="timeline" x="145" y="773">Server → Client</text><text class="timeline" x="360" y="773">ACK</text><text class="timeline" x="850" y="773">Acknowledges request bytes</text>
+    <line class="line" x1="40" y1="786" x2="1400" y2="786"/>
+    <circle class="accent" cx="62" cy="811" r="14"/><text class="packetnum" x="57" y="817">6</text><text class="timeline" x="145" y="817">Server → Client</text><text class="timeline" x="360" y="817">HTTP/1.1 200 OK + HTML</text><text class="timeline" x="850" y="817">Successful response; body is 45 bytes</text>
+    <line class="line" x1="40" y1="830" x2="1400" y2="830"/>
+    <circle class="accent" cx="62" cy="855" r="14"/><text class="packetnum" x="57" y="861">7</text><text class="timeline" x="145" y="861">Client → Server</text><text class="timeline" x="360" y="861">ACK</text><text class="timeline" x="850" y="861">Acknowledges response bytes</text>
+    <line class="line" x1="40" y1="874" x2="1400" y2="874"/>
+    <circle class="accent" cx="62" cy="899" r="14"/><text class="packetnum" x="57" y="905">8–10</text><text class="timeline" x="145" y="905">Both directions</text><text class="timeline" x="360" y="905">FIN-ACK → FIN-ACK → ACK</text><text class="timeline" x="850" y="905">Orderly TCP teardown (packets 8, 9, 10)</text>
+  </g>
+
+  <rect class="panel" x="18" y="958" width="685" height="250" rx="12"/>
+  <text class="subheading" x="40" y="994">HTTP request — Packet 4</text>
+  <rect class="blue" x="40" y="1010" width="640" height="86" rx="7"/>
+  <text class="mono" x="58" y="1037">GET / HTTP/1.1</text>
+  <text class="mono" x="58" y="1061">Host: [redacted lab server]</text>
+  <text class="mono" x="58" y="1085">User-Agent: Wget/1.25.0</text>
+  <text class="small" x="40" y="1125">The request targets the root path over TCP port 80.</text>
+
+  <rect class="panel" x="720" y="958" width="702" height="250" rx="12"/>
+  <text class="subheading" x="742" y="994">HTTP response — Packet 6</text>
+  <rect class="green" x="742" y="1010" width="658" height="104" rx="7"/>
+  <text class="mono" x="760" y="1037">HTTP/1.1 200 OK</text>
+  <text class="mono" x="760" y="1061">Server: Apache • Content-Length: 45</text>
+  <text class="mono" x="760" y="1085">Content-Type: text/html</text>
+  <text class="mono" x="760" y="1109">&lt;html&gt;...&lt;h1&gt;It works!&lt;/h1&gt;...&lt;/html&gt;</text>
+  <text class="small" x="742" y="1142">The curl transcript is supporting output from a separate request.</text>
+  <text class="small" x="742" y="1164">This visual summarizes the supplied capture; it is not a raw hex-dump reproduction.</text>
+  <text class="small" x="40" y="1230">Prepared from the supplied lab logs • Internal IP/MAC identifiers omitted • See docs/packet-analysis.md for detailed field analysis.</text>
+</svg>
