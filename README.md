@@ -34,6 +34,10 @@ A lab-based packet-analysis case study using Linux networking tools to observe a
 
 See the [packet-by-packet analysis](docs/packet-analysis.md), [commands and method](docs/commands-and-method.md), [flow diagram](diagrams/http-tcp-flow.mmd), and [sanitized evidence excerpts](evidence/redacted-capture-excerpts.md).
 
+## Visual Packet Analysis
+
+![Annotated TCP Handshake and HTTP Flow](<images/Annotated TCP Handshake and HTTP Flow.png>)
+
 ## Packet flow
 
 ```mermaid
