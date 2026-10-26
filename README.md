@@ -36,7 +36,9 @@ See the [packet-by-packet analysis](docs/packet-analysis.md), [commands and meth
 
 ## Visual Packet Analysis
 
-![Annotated TCP Handshake and HTTP Flow](<images/Annotated TCP Handshake and HTTP Flow.png>)
+![Sanitized annotation of the first TCP SYN packet and the full HTTP/TCP flow](images/http-tcp-analysis.svg)
+
+*The visual summarizes the observed packet sequence and selected header values. Endpoint IP and MAC identifiers are redacted; refer to the packet-analysis notes for details.*
 
 ## Packet flow
 
@@ -58,7 +60,7 @@ sequenceDiagram
 
 ## Privacy and scope
 
-The example excerpts in this repository are sanitized for public sharing: internal endpoint addresses and MAC addresses are replaced by descriptive labels. The original raw capture is not needed to understand the analysis and is not reproduced here. The analysis describes a controlled university lab exercise, not a scan of public systems.
+The example excerpts in this repository are sanitized for public sharing: internal endpoint addresses and MAC addresses are replaced by descriptive labels. The original raw capture is not reproduced here. The analysis describes a controlled university lab exercise, not a scan of public systems.
 
 ## Reproducibility
 
