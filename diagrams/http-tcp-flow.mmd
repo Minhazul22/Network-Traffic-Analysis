@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant C as HTTP Client
+    participant S as Lab Web Server
+    C->>S: SYN
+    S-->>C: SYN-ACK
+    C->>S: ACK
+    Note over C,S: TCP connection established
+    C->>S: GET / HTTP/1.1
+    S-->>C: ACK request bytes
+    S-->>C: HTTP/1.1 200 OK + HTML body
+    C->>S: ACK response bytes
+    C->>S: FIN-ACK
+    S-->>C: FIN-ACK
+    C->>S: ACK
